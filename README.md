@@ -1,6 +1,17 @@
 # Getting Started
 
-### Reference Documentation
+### 使用到的组件
+
+* MyBatis
+* MyBatis Plus 3.x
+* Lombok
+* [swagger2](http://127.0.0.1:8080/swagger-ui.html#/) (用于自动生成API文档)
+ 
+ ### 数据库为mysql
+ 
+ * pcr.sql
+ 
+ ### Reference Documentation
 For further reference, please consider the following sections:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
@@ -15,11 +26,3 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 * [MyBatis Quick Start](https://github.com/mybatis/spring-boot-starter/wiki/Quick-Start)
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-
-### 使用到的组件
-
-* MyBatis
-* MyBatis Plus 3.x
-* Lombok
-* [swagger2](http://127.0.0.1:8080/swagger-ui.html#/) (用于自动生成API文档)
- 
