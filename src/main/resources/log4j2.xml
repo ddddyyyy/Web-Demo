@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <properties>
+        <property name="LOG_HOME">/root/demo</property>
+        <property name="FILE_NAME">demo</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}  %-5level %c(%M:%L) - %msg%n"/>
+        </Console>
+        <RollingRandomAccessFile name="RollingRandomInfoFile" fileName="${LOG_HOME}/${FILE_NAME}/info/info.log"
+                                 filePattern="${LOG_HOME}/${FILE_NAME}/info/${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}  %-5level %l(%M:%L) - %msg%n"/>
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingRandomErrorFile" fileName="${LOG_HOME}/${FILE_NAME}/error/error.log"
+                                 filePattern="${LOG_HOME}/${FILE_NAME}/error/${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}  %-5level %l(%M:%L) - %msg%n"/>
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingRandomWarnFile" fileName="${LOG_HOME}/${FILE_NAME}/warn/warn.log"
+                                 filePattern="${LOG_HOME}/${FILE_NAME}/warn/${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}  %-5level %l(%M:%L) - %msg%n"/>
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!--表示所有的日志将会下列的来源输出-->
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingRandomInfoFile"/>
+            <AppenderRef ref="RollingRandomErrorFile"/>
+            <AppenderRef ref="RollingRandomWarnFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
